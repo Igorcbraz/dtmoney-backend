@@ -27,5 +27,5 @@ app.post('/transactions', async (req, res) => {
   return res.json(transaction)
 })
 
-
-app.listen(3333, () => {console.log('sever is running on port 3333')})
+const port = process.env.PORT || 3000;
+app.listen(port, () => {console.log(`sever is running on port ${port}`)})
