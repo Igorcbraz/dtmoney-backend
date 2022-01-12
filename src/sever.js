@@ -1,7 +1,6 @@
 const db = require('./db')
-import "reflect-metadata";
 
-import express from 'express';
+const express = require('express');
 const app = express();
 
 const bodyParser = require('body-parser');
