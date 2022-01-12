@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev src/sever.js",
-    "start": "node src/sever.js"
+    "start": "ts-node-dev src/sever.js"
   },
   "devDependencies": {
     "ts-node-dev": "^1.1.8",
