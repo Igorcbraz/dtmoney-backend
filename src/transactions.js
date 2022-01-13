@@ -9,8 +9,8 @@ async function selectTransactions(id){
 
 async function insertTransaction(transaction){
     const pool = await db.connect();
-    const sql = "INSERT INTO tbl_transactions(title,tipo,category,amount,payer,createdAt) VALUES (?,?,?,?,?,?)";
-    const values = [transaction.title, transaction.tipo, transaction.category, transaction.amount, transaction.payer, transaction.createdAt];
+    const sql = "INSERT INTO tbl_transactions(title,tipo,category,amount,payer,createdAt, FK_id_user) VALUES (?,?,?,?,?,?, ?)";
+    const values = [transaction.title, transaction.tipo, transaction.category, transaction.amount, transaction.payer, transaction.createdAt, transaction.id];
     await pool.query(sql, values);
     
     const lastTransaction = await pool.query("SELECT * FROM tbl_transactions ORDER BY id DESC LIMIT 1;");
