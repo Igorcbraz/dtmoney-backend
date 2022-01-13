@@ -1,4 +1,5 @@
-const db = require('./db')
+const connTransaction = require('./transactions')
+const connLogin = require('./login')
 
 const express = require('express');
 const app = express();
@@ -14,19 +15,34 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json())
 
 
-app.get('/transactions', async (req, res) => {
- 
-    const transactions = await db.selectTransactions()
-    return res.json(transactions)
-  
+// Transactions routes
+app.get('/transactions/:id', async (req, res) => {
+  const transactions = await connTransaction.selectTransactions(req.params.id)
+   return res.json(transactions)
+  // try {
+  //   const transactions = await connTransaction.selectTransactions(id)
+  //   return res.json(transactions)
+  // } catch (err) {
+  //   return res.json({status: 'error', err})
+  // }
 })
 
 app.post('/transactions', async (req, res) => {
   try {
-    const transaction = await db.insertTransaction(req.body)
+    const transaction = await connTransaction.insertTransaction(req.body)
     return res.json(transaction)
-  } catch (error) {
-    return res.json({status: 'error', error: err})
+  } catch (err) {
+    return res.json({status: 'error', err})
+  }
+})
+
+// Login routes
+app.post('/login', async (req, res) => {
+  try {
+    const login = await connLogin.login(req.body);
+    return res.json(login);
+  } catch (err) {
+    return res.json({status: 'error', err})
   }
 })
 
