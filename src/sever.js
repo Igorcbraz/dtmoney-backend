@@ -1,5 +1,5 @@
 const connTransaction = require('./transactions')
-const connLogin = require('./login')
+const connUser = require('./user')
 
 const express = require('express');
 const app = express();
@@ -17,14 +17,12 @@ app.use(bodyParser.json())
 
 // Transactions routes
 app.get('/transactions/:id', async (req, res) => {
-  const transactions = await connTransaction.selectTransactions(req.params.id)
+  try {
+    const transactions = await connTransaction.selectTransactions(req.params.id)
    return res.json(transactions)
-  // try {
-  //   const transactions = await connTransaction.selectTransactions(id)
-  //   return res.json(transactions)
-  // } catch (err) {
-  //   return res.json({status: 'error', err})
-  // }
+  } catch (err) {
+    return res.json({status: 'error', err})
+  }
 })
 
 app.post('/transactions', async (req, res) => {
@@ -36,11 +34,20 @@ app.post('/transactions', async (req, res) => {
   }
 })
 
-// Login routes
+// User routes
 app.post('/login', async (req, res) => {
   try {
-    const login = await connLogin.login(req.body);
+    const login = await connUser.login(req.body);
     return res.json(login);
+  } catch (err) {
+    return res.json({status: 'error', err})
+  }
+})
+
+app.post('/register', async (req, res) => {
+  try {
+    const register = await connUser.register(req.body);
+    return res.json(register);
   } catch (err) {
     return res.json({status: 'error', err})
   }
