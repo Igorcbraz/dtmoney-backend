@@ -34,6 +34,24 @@ app.post('/transactions', async (req, res) => {
   }
 })
 
+app.delete('/transactions/:id/:userId', async (req, res) => {
+  // try {
+    const transactions = await connTransaction.deleteTransaction(req.params.id, req.params.userId)
+    return res.json(transactions)
+  // } catch (err) {
+  //   return res.json({status: 'error', err})
+  // }
+})
+
+app.put('/transactions', async (req, res) => {
+  // try {
+    const transactions = await connTransaction.updateTransaction(req.body)
+    return res.json(transactions)
+  // } catch (err) {
+  //   return res.json({status: 'error', err})
+  // }
+})
+
 // User routes
 app.post('/login', async (req, res) => {
   try {

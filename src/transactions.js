@@ -18,4 +18,23 @@ async function insertTransaction(transaction){
     return lastTransaction[0][0]
 }
 
-module.exports = {selectTransactions, insertTransaction}
+async function deleteTransaction(id, userId){
+    const pool = await db.connect();
+    await pool.query('DELETE FROM tbl_transactions WHERE id = ?', [id]);
+    const transactions = await pool.query('SELECT * FROM tbl_transactions WHERE FK_id_user = ?', [userId]);
+    
+    return transactions[0];
+}
+
+async function updateTransaction(transaction){
+    const pool = await db.connect();
+    const sql  = "UPDATE tbl_transactions SET title = ?, amount = ?, tipo = ?, category = ?, payer = ? WHERE id = ?" ;
+    const values = [transaction.title, transaction.amount, transaction.tipo, transaction.category, transaction.payer, transaction.id];
+    const [rows] = await pool.query(sql, values);
+
+    const transactions = await pool.query('SELECT * FROM tbl_transactions WHERE FK_id_user = ?', [transaction.FK_id_user]);
+    
+    return transactions[0];
+}
+
+module.exports = {selectTransactions, insertTransaction, deleteTransaction, updateTransaction}
