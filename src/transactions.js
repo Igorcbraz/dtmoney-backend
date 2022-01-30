@@ -3,7 +3,7 @@ const db = require('./db')
 // Transactions Connections 
 async function selectTransactions(id){
     const pool = await db.connect();
-    const [rows] = await pool.query('SELECT * FROM tbl_transactions WHERE FK_id_user = ?', [id]);
+    const [rows] = await pool.query('SELECT * FROM tbl_transactions WHERE FK_id_user = ? ORDER BY createdAt DESC', [id]);
     return rows;
 }
 
