@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "ts-node-dev --exit-child --transpile-only --ignore-watch node_modules src/server.ts",
-    "start": "ts-node src/server.ts "
+    "start": "ts-node src/server.ts"
   },
   "devDependencies": {
     "ts-node-dev": "^1.1.8"
