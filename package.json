@@ -8,9 +8,7 @@
     "dev": "ts-node-dev --exit-child --transpile-only --ignore-watch node_modules src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
-    "postinstall": "tsc",
-    "watch-node": "nodemon dist/server.js",
-    "watch-ts": "tsc -w"
+    "postinstall": "tsc"
   },
   "devDependencies": {
     "ts-node-dev": "^1.1.8"
