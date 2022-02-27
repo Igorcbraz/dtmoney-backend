@@ -19,7 +19,7 @@ app.use(bodyParser.json())
 app.get('/transactions/:id', async (req, res) => {
   try {
     const transactions = await connTransaction.selectTransactions(req.params.id)
-   return res.json(transactions)
+    return res.json(transactions)
   } catch (err) {
     return res.json({status: 'error', err})
   }
