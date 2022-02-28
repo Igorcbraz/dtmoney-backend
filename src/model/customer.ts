@@ -1,11 +1,13 @@
-import { PrismaClient  } from "@prisma/client";
+import Prisma from '@prisma/client';
 import jwt from 'jsonwebtoken';
 import md5 from 'md5'
 
 import dotenv from 'dotenv';
 dotenv.config();
 
+const { PrismaClient } = Prisma;
 const prisma = new PrismaClient();
+
 
 interface LoginProps{
     email: string;

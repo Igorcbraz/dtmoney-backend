@@ -1,9 +1,19 @@
 {
   "compilerOptions": {
+    "module": "ES2020",
+    "target": "ES2015", 
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true,
     "sourceMap": true,
     "outDir": "dist",
     "strict": true,
-    "lib": ["esnext"],
-    "esModuleInterop": true
-  }
+    "lib": ["esnext"]
+  },
+  "include": [
+    "./src"
+  ],
 }
