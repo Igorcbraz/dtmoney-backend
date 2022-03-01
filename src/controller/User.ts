@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-import { login, register } from "../model/customer.js";
+import { login, register } from "../model/customer";
 
 export class UserController{
     async login(req: Request, res: Response){

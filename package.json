@@ -10,7 +10,7 @@
     "start": "node dist/server.js"
   },
   "devDependencies": {
-    "ts-node-dev": "^1.1.8"
+    
   },
   "dependencies": {
     "@prisma/client": "^3.10.0",
@@ -28,6 +28,7 @@
     "prisma": "^3.10.0",
     "ts-node": "^10.5.0",
     "tsc": "^2.0.4",
-    "typescript": "^4.5.5"
+    "typescript": "^4.5.5",
+    "ts-node-dev": "^1.1.8"
   }
 }

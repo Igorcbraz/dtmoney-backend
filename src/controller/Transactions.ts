@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 
-import { selectAllTransactions, insertTransaction, deleteTransaction, updateTransaction } from "../model/transaction.js";
+import { selectAllTransactions, insertTransaction, deleteTransaction, updateTransaction } from "../model/transaction";
 
 export class TransactionController {
     async select(req: Request, res: Response){
