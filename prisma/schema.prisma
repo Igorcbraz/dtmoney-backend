@@ -26,7 +26,7 @@ model tbl_user {
   customer         String             @db.VarChar(50)
   email            String             @unique(map: "email") @db.VarChar(50)
   pass             String             @db.VarChar(50)
-  createdAt        DateTime           @db.DateTime(0)
+  createdAt        String             @db.VarChar(50)
   estatus          String             @db.VarChar(15)
   tbl_transactions tbl_transactions[]
 }

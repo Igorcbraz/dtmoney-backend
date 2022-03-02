@@ -21,13 +21,14 @@ export async function selectAllTransactions(id: number){
     }
 }
 
-interface InsertTransactionProps{
+interface TransactionProps{
     title: string;
     tipo: string;
     category: string;
     amount: number;
     payer: string;
     createdAt: string;
+    id: number;
     FK_id_user: number;
 }
 export async function insertTransaction({
@@ -38,7 +39,7 @@ export async function insertTransaction({
     payer,
     createdAt,
     FK_id_user
-}: InsertTransactionProps){
+}: TransactionProps){
     const insertTransaction = await prisma.tbl_transactions.create({
         data: {
             title,
@@ -90,9 +91,6 @@ export async function deleteTransaction(id: number, userId: number){
     }
 }
 
-interface UpdateTransactionProps extends InsertTransactionProps{
-    id: number;
-}
 export async function updateTransaction({
     title,
     amount,
@@ -102,7 +100,7 @@ export async function updateTransaction({
     createdAt,
     id,
     FK_id_user
-}: UpdateTransactionProps){
+}: TransactionProps){
     const updateTransaction = await prisma.tbl_transactions.update({
         where: {
             id

@@ -14,13 +14,13 @@ export class TransactionController {
     }
 
     async insert(req: Request, res: Response){
-        try {
+        // try {
             const transactions = await insertTransaction(req.body);
 
             return res.json(transactions);
-        } catch (err) {
-            return res.json({status: 'error', err})
-        }
+        // } catch (err) {
+        //     return res.json({status: 'error', err})
+        // }
     }
 
     async delete(req: Request, res: Response){

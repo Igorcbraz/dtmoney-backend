@@ -80,7 +80,7 @@ export async function register({
         });
 
         if(insertUser){
-            const id = await prisma.tbl_user.findUnique({
+            const userId = await prisma.tbl_user.findUnique({
                 where: {
                     email
                 },
@@ -89,9 +89,16 @@ export async function register({
                 }
             });
 
+            if(!userId) {
+                return {
+                    status: 'error',
+                    msg: 'User id is not defined'
+                }
+            }
+
             const secret = process.env.SECRET_JWT ?? '';
             const token = jwt.sign({
-                id,
+                id: userId.id,
                 customer,
                 email,
                 createdAt
@@ -104,12 +111,14 @@ export async function register({
             }
         } else {
             return {
-                status: 'error'
+                status: 'error',
+                msg: 'Error inserting user in database'
             }
         }
     } else {
         return {
-            status: 'error'
+            status: 'error',
+            msg: 'Users do not exists'
         }
     } 
 }
