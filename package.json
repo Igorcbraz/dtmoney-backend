@@ -6,8 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "ts-node-dev --exit-child --transpile-only --ignore-watch node_modules src/server.ts",
-    "build": "tsc",
-    "start": "node dist/server.js"
+    "start": "ts-node-dev --exit-child --transpile-only --ignore-watch node_modules src/server.ts"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.0.0",
