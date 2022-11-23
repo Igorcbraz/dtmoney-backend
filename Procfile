@@ -1,1 +1,1 @@
-web: node src/sever.js
+web: npm run dev
